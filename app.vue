@@ -1,6 +1,9 @@
 <template>
-  <NuxtLayout>
-    <TheNav />
-    <NuxtPage />
-  </NuxtLayout>
+  <TheNav />
+  <UMain>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </UMain>
+  <TheFooter />
 </template>

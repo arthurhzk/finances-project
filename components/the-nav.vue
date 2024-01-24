@@ -1,12 +1,45 @@
-<template>
-  <section class="flex flex-col md:flex-row items-center justify-between">
-    <h1>WiseHub - Soluçoes em Finanças</h1>
-    <div v-for="item in navLinks" :key="item.name">
-      <nuxt-link :to="item.path">{{ item.name }}</nuxt-link>
-    </div>
-  </section>
-</template>
-
 <script setup lang="ts">
-import navLinks from "~/constants/nav-links";
+const links = [
+  {
+    label: "Registrar",
+    icon: "i-heroicons-book-open",
+    to: "/register",
+  },
+  {
+    label: "Acessar",
+    icon: "i-heroicons-square-3-stack-3d",
+    to: "/login",
+  },
+  {
+    label: "Contato",
+    icon: "i-heroicons-rocket-launch",
+    to: "/contact",
+  },
+];
 </script>
+
+<template>
+  <UHeader :links="links">
+    <template #logo>
+      <Logo class="w-auto h-6" />
+    </template>
+
+    <template #right>
+      <UDocsSearchButton label="" />
+
+      <UColorModeButton />
+
+      <UButton
+        to="https://github.com/nuxt/ui"
+        target="_blank"
+        icon="i-simple-icons-github"
+        color="gray"
+        variant="ghost"
+      />
+    </template>
+
+    <template #panel>
+      <UNavigationTree :links="links" />
+    </template>
+  </UHeader>
+</template>

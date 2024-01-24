@@ -1,10 +1,8 @@
 <template>
   <UCard>
-    <template #header>
-      <h2>{{ $props.card.title }}</h2>
-      <h2>{{ $props.card.description }}</h2>
-      <img class="mx-auto" :src="$props.card.image" alt="" />
-    </template>
+    <h2>{{ $props.card.title }}</h2>
+    <h2>{{ $props.card.description }}</h2>
+    <img class="mx-auto" :src="$props.card.image" alt="" />
   </UCard>
 </template>
 
