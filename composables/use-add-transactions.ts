@@ -1,19 +1,17 @@
 import supabase from "~/lib/supabase";
 import { ref } from "vue";
-import { type Finances } from "~/types/finances";
+
 export const useAddTransactions = () => {
-  const initialState = [
-    {
-      description: undefined,
-      type: undefined,
-      quantity: null,
-      date: new Date(),
-    },
-  ];
-  const state = ref<Finances[]>(initialState);
+  const initialState = {
+    description: undefined,
+    type: undefined,
+    quantity: null,
+    date: new Date(),
+  };
+  const state = ref(initialState);
 
   const addTransaction = async () => {
-    const { data, error } = await supabase
+    await supabase
       .from("transactions")
       .upsert({
         descriçao: state.value.description,

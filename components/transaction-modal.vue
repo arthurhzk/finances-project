@@ -30,11 +30,7 @@
             />
           </UFormGroup>
           <UFormGroup label="Tipo:">
-            <UInput
-              v-model="state.type"
-              type="text"
-              icon="i-heroicons-chat-bubble-bottom-center"
-            />
+            <USelect v-model="state.type" :options="transactionTypes" />
           </UFormGroup>
           <UFormGroup label="Descrição:">
             <UInput
@@ -42,9 +38,6 @@
               type="text"
               icon="i-heroicons-pencil-square"
             />
-          </UFormGroup>
-          <UFormGroup v-model="state.status" label="Status:">
-            <UInput type="text" icon="i-heroicons-user" />
           </UFormGroup>
         </div>
 
@@ -66,11 +59,19 @@
 
 <script setup>
 const isOpen = ref(false);
+import { TransactionEnum } from "~/enums/transactionEnum.ts";
 
 const { state, addTransaction } = useAddTransactions();
-
+const { fetchTransactions } = useTransactions();
 const confirmTransaction = async () => {
   await addTransaction();
+  await fetchTransactions();
   isOpen.value = false;
 };
+const transactionTypes = [
+  TransactionEnum.AMOUNT,
+  TransactionEnum.INVESTMENTS,
+  TransactionEnum.GAINS,
+  TransactionEnum.EXPENSES,
+];
 </script>
