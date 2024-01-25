@@ -15,7 +15,9 @@
         <div class="w-8 h-8" />
       </template>
     </ClientOnly>
-    <p class="dark:text-slate-200">Tema: {{ isDark ? "dark" : "light" }}</p>
+    <p class="dark:text-slate-200 hidden md:block">
+      Tema: {{ isDark ? "dark" : "light" }}
+    </p>
   </section>
 </template>
 

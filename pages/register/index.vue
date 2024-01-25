@@ -1,65 +1,35 @@
 <template>
-  <section class="flex items-center justify-center">
-    <UCard class="max-w-sm w-full">
-      <UAuthForm
-        :fields="fields"
-        :providers="providers"
-        title="Welcome back!"
-        align="top"
-        icon="i-heroicons-lock-closed"
-        :ui="{ base: 'text-center', footer: 'text-center' }"
-        @submit="onSubmit"
-      >
-        <template #description>
-          Don't have an account?
-          <NuxtLink to="/" class="text-primary font-medium">Sign up</NuxtLink>.
-        </template>
+  <UCard>
+    <template #header> Faça o registro no WiseHub </template>
+    <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+      <UFormGroup label="Email" name="email">
+        <UInput v-model="state.email" />
+      </UFormGroup>
 
-        <template #password-hint>
-          <NuxtLink to="/" class="text-primary font-medium"
-            >Forgot password?</NuxtLink
-          >
-        </template>
+      <UFormGroup label="Password" name="password">
+        <UInput v-model="state.password" type="password" />
+      </UFormGroup>
 
-        <template #footer>
-          By signing in, you agree to our
-          <NuxtLink to="/" class="text-primary font-medium"
-            >Terms of Service</NuxtLink
-          >.
-        </template>
-      </UAuthForm>
-    </UCard>
-  </section>
+      <UButton type="submit"> Registrar </UButton>
+    </UForm>
+  </UCard>
 </template>
 
 <script setup lang="ts">
-const fields = [
-  {
-    name: "email",
-    type: "text",
-    label: "Email",
-    placeholder: "Enter your email",
-  },
-  {
-    name: "password",
-    label: "Password",
-    type: "password",
-    placeholder: "Enter your password",
-  },
-];
+import { z } from "zod";
+import type { FormSubmitEvent } from "#ui/types";
+import { useUserStore } from "~/store/user";
 
-const providers = [
-  {
-    label: "Continue with GitHub",
-    icon: "i-simple-icons-github",
-    color: "white" as const,
-    click: () => {
-      console.log("Redirect to GitHub");
-    },
-  },
-];
+const { signUpUser, state } = useUserStore();
+const schema = z.object({
+  email: z.string().email("Email invalido!"),
+  password: z.string().min(8, "Deve possuir pelo menos 8 caracteres!"),
+});
 
-function onSubmit(data: any) {
-  console.log("Submitted", data);
+type Schema = z.output<typeof schema>;
+
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+  console.log(event.data);
+  await signUpUser();
 }
 </script>

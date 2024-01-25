@@ -1,5 +1,4 @@
 import supabase from "~/lib/supabase";
-import { ref } from "vue";
 import { type Finances } from "~/types/finances";
 export const useTransactions = () => {
   const transactions = ref<Finances[] | null>([]);
