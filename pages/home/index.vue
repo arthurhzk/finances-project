@@ -1,6 +1,10 @@
 <template>
-  <section class="flex items-center justify-between mb-10">
-    <h1 class="text-4xl font-extrabold">Sumário</h1>
+  <section
+    class="flex flex-col space-y-4 md:flex-row items-center justify-between mb-10"
+  >
+    <h1 class="text-4xl font-extrabold text-center">
+      Sumário de {{ store.userEmail }}
+    </h1>
     <div>
       <USelectMenu :options="brandImages" v-model="selectedView" />
     </div>
@@ -10,26 +14,15 @@
     class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-16 mb-10"
   >
     <financial-card
-      title="Saldo"
-      :amount="totalAmount"
-      percentage="50"
-    ></financial-card>
-    <financial-card
-      title="Investimentos"
-      :amount="totalInvestments"
-      percentage="50"
-    ></financial-card>
-    <financial-card
-      title="Ganhos"
-      :amount="totalGains"
-      :percentage="50"
-    ></financial-card>
-    <financial-card
-      title="Despesas"
-      :amount="totalExpenses"
-      :percentage="50"
-    ></financial-card>
-    <div class="chart mx-auto">
+      v-for="card in cards"
+      :key="card.title"
+      :title="card.title"
+      :amount="card.amount"
+      :percentage="card.percentage"
+    />
+    <div
+      class="mx-auto flex-col md:flex-row w-[450px] h-[450px] flex justify-between"
+    >
       <expenses-chart
         :amount="totalAmount"
         :expenses="totalExpenses"
@@ -40,9 +33,7 @@
   </section>
   <div class="flex justify-start"></div>
   <div class="space-y-4 flex flex-col md:flex-row items-center justify-between">
-    <h3 class="text-2xl font-extrabold text-center pt-5">
-      Movimentação de {{ store.userEmail }}
-    </h3>
+    <h3 class="text-2xl font-extrabold text-center pt-5">Movimentação</h3>
     <UInput
       icon="i-heroicons-magnifying-glass-20-solid"
       color="gray"
@@ -65,11 +56,10 @@ const store = useUserStore();
 onMounted(async () => {
   await store.getUserMetadata();
 });
+const cards = [
+  { title: "Saldo", amount: totalAmount, percentage: 50 },
+  { title: "Investimentos", amount: totalInvestments, percentage: 50 },
+  { title: "Ganhos", amount: totalGains, percentage: 50 },
+  { title: "Despesas", amount: totalExpenses, percentage: 50 },
+];
 </script>
-
-<style scoped>
-.chart {
-  max-width: 450px;
-  max-height: 350px;
-}
-</style>
