@@ -4,7 +4,7 @@
       <h1
         class="text-center text-green-500 font-semibold text-3xl md:text-6xl leading-relaxed"
       >
-        Controle as suas finanças de forma inteligente.
+        Controle as suas finanças de forma inteligente
       </h1>
       <p :class="getParagraphStyle">
         Desenvolvemos um software que é capaz de fazer voce reduzir custos de
@@ -40,7 +40,7 @@
       <h2
         class="text-center text-green-500 font-semibold text-3xl md:text-4xl leading-relaxed tracking-tight mt-6"
       >
-        Comece com apenas 3 passos.
+        Comece com apenas 3 passos
       </h2>
       <p :class="getParagraphStyle">
         Seja um cliente WiseHub da maneira mais simples, rápida e precisa. Não
@@ -71,7 +71,7 @@
       <h2
         class="mt-12 text-center text-green-500 font-semibold text-4xl leading-relaxed tracking-tight"
       >
-        Benefícios que o WiseHub fornece.
+        Benefícios que o WiseHub fornece
       </h2>
       <p :class="getParagraphStyle">
         Desenvolvemos um software que é capaz de fazer voce reduzir custos de
