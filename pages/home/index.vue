@@ -1,4 +1,6 @@
 <template>
+  <vertical-navigation></vertical-navigation>
+
   <section class="flex items-center justify-between mb-10">
     <h1 class="text-4xl font-extrabold">Sumário</h1>
     <div>
@@ -38,6 +40,7 @@
     />
   </div>
   <transactions class="mt-8" />
+  <h3 class="text-2xl font-extrabold text-center pt-5">Atividade recente</h3>
 </template>
 
 <script setup>

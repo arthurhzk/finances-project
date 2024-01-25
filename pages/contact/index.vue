@@ -1,3 +1,3 @@
 <template>
-  <div>fdjifdij</div>
+  <div></div>
 </template>
