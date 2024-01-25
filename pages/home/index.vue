@@ -26,6 +26,9 @@
       :percentage="50"
     ></financial-card>
   </section>
+  <div class="flex justify-start">
+    <doughnut-chart class="chart"></doughnut-chart>
+  </div>
   <div class="space-y-4 flex flex-col md:flex-row items-center justify-between">
     <h3 class="text-2xl font-extrabold text-center pt-5">
       Movimentação de {{ store.userEmail }}
@@ -39,7 +42,6 @@
     <transaction-modal></transaction-modal>
   </div>
   <transactions class="mt-8" />
-  <h3 class="text-2xl font-extrabold text-center pt-5">Atividade recente</h3>
 </template>
 
 <script setup>
@@ -52,3 +54,10 @@ onMounted(async () => {
   await store.getUserMetadata();
 });
 </script>
+
+<style scoped>
+.chart {
+  max-width: 450px;
+  max-height: 350px;
+}
+</style>

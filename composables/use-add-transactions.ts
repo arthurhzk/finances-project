@@ -17,7 +17,6 @@ export const useAddTransactions = () => {
       .from("transactions")
       .upsert({
         descriçao: state.value.description,
-
         tipo: state.value.type,
         quantidade: state.value.quantity,
         data: state.value.date,
