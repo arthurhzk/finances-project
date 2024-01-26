@@ -27,12 +27,7 @@ export default {
   computed: {
     chartData() {
       return {
-        labels: [
-          TransactionEnum.AMOUNT,
-          TransactionEnum.EXPENSES,
-          TransactionEnum.GAINS,
-          TransactionEnum.INVESTMENTS,
-        ],
+        labels: ["Quantidade", "Gastos", "Ganhos", "Investimentos"],
         datasets: [
           {
             backgroundColor: ["#00C58E", "#FF0000", "#3182CE", "#A0AEC0"],
