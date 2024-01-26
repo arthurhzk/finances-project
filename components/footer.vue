@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-gray-900">
-    <div class="max-w-2xl mx-auto text-white py-10">
+  <div>
+    <div class="max-w-2xl mx-auto dark:text-slate-200 py-10">
       <div class="text-center">
         <h3 class="text-3xl mb-3">Faça o download do nosso aplicativo</h3>
         <p>WiseHub - Soluções em Finanças</p>
@@ -11,7 +11,7 @@
               class="w-7 md:w-8"
             />
             <div class="text-left ml-3">
-              <p class="text-sm md:text-base">Google Play Store</p>
+              <p class="text-sm md:text-base">Google Play</p>
             </div>
           </div>
           <div
@@ -22,7 +22,7 @@
               class="w-7 md:w-8"
             />
             <div class="text-left ml-3">
-              <p class="text-sm md:text-base">Apple Store</p>
+              <p class="text-sm md:text-base">App Store</p>
             </div>
           </div>
         </div>
@@ -42,3 +42,5 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts"></script>
