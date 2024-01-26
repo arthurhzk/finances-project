@@ -5,8 +5,6 @@
     <h1 class="text-4xl font-extrabold text-center">
       Sumário de {{ store.userEmail }}
     </h1>
-
-    <USelectMenu :options="periodTransactions" v-model="selectedView" />
   </section>
 
   <section
@@ -19,6 +17,7 @@
       :amount="card.amount"
       :percentage="card.percentage"
     />
+    <USelect :options="periodTransactions" v-model="selectedView" />
     <div
       class="mx-auto flex-col md:flex-row w-[450px] h-[450px] flex justify-between"
     >

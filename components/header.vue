@@ -4,15 +4,13 @@
       WiseHub - Soluções Financeiras
     </NuxtLink>
     <div>
-      <UDropdown>
-        <div class="flex items-center gap-8">
-          <NuxtLink to="/login">Login</NuxtLink>
-          <NuxtLink to="/register">Registrar</NuxtLink>
-          <set-theme></set-theme>
-        </div>
-        <template #account> </template>
-        <template #item="{ item }"> </template>
-      </UDropdown>
+      <div class="flex items-center gap-8">
+        <NuxtLink to="/login">Login</NuxtLink>
+        <NuxtLink to="/register">Registrar</NuxtLink>
+        <set-theme></set-theme>
+      </div>
     </div>
   </header>
 </template>
+
+<script setup lang="ts"></script>
