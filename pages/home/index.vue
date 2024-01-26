@@ -5,9 +5,8 @@
     <h1 class="text-4xl font-extrabold text-center">
       Sumário de {{ store.userEmail }}
     </h1>
-    <div>
-      <USelectMenu :options="brandImages" v-model="selectedView" />
-    </div>
+
+    <USelectMenu :options="periodTransactions" v-model="selectedView" />
   </section>
 
   <section
@@ -46,10 +45,10 @@
 </template>
 
 <script setup>
-import brandImages from "~/constants/brand-images";
-const selectedView = ref(brandImages[0]);
+const selectedView = ref(periodTransactions[0]);
 import { useUserStore } from "~/store/user";
 import { useTransactions } from "~/composables/use-transactions";
+import periodTransactions from "~/constants/period-transactions";
 const { totalAmount, totalInvestments, totalGains, totalExpenses } =
   useTransactions();
 const store = useUserStore();
