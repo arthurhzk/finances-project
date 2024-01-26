@@ -1,3 +1,3 @@
-const periodTransactions = ["Diário", "Semanal", "Mensal", "Anual"];
+const periodTransactions = ["Diário", "Mensal", "Anual"];
 
 export default periodTransactions;

@@ -1,5 +1,5 @@
 <template>
-  <UInput v-model="q" placeholder="Filter people..." />
+  <UInput v-model="q" placeholder="Filtrar transações..." />
   <UTable
     v-if="isLoading"
     loading
@@ -9,7 +9,13 @@
     }"
   />
 
-  <UTable v-else="isLoading" v-model="selected" :rows="filteredRows" />
+  <UTable
+    v-else="isLoading"
+    :sort="sort"
+    v-model="selected"
+    :rows="filteredRows"
+  >
+  </UTable>
 
   <div
     class="flex justify-end px-3 py-3.5 border-t border-gray-200 dark:border-gray-700"
@@ -18,7 +24,8 @@
       v-model="page"
       :page-count="pageCount"
       :total="transactions.length"
-    />
+    >
+    </UPagination>
   </div>
 </template>
 

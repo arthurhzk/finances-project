@@ -34,24 +34,19 @@
   <div class="space-y-4 flex flex-col md:flex-row items-center justify-between">
     <h3 class="text-2xl font-extrabold text-center pt-5">Movimentação</h3>
 
-    <USelect
-      variant="outline"
-      :options="periodTransactions"
-      v-model="selectedView"
-    />
     <transaction-modal></transaction-modal>
   </div>
   <transactions />
 </template>
 
 <script setup>
-const selectedView = ref(periodTransactions[0]);
 import { useUserStore } from "~/store/user";
 import { useTransactions } from "~/composables/use-transactions";
-import periodTransactions from "~/constants/period-transactions";
+
 const { totalAmount, totalInvestments, totalGains, totalExpenses } =
   useTransactions();
 const store = useUserStore();
+
 onMounted(async () => {
   await store.getUserMetadata();
 });

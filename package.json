@@ -22,6 +22,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@supabase/supabase-js": "^2.39.3",
     "chart.js": "^4.4.1",
+    "date-fns": "^3.3.1",
     "pinia": "^2.1.7",
     "vue-chartjs": "^5.3.0",
     "zod": "^3.22.4"

@@ -63,6 +63,7 @@ const confirmTransaction = async () => {
   await addTransaction();
   await fetchTransactions();
   isOpen.value = false;
+  window.location.reload();
 };
 const transactionTypes = ["Saldo", "Investimentos", "Ganhos", "Despesas"];
 </script>
