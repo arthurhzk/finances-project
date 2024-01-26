@@ -1,5 +1,5 @@
 import supabase from "~/lib/supabase";
-import TransactionEnum from "~/enums/transactionEnum";
+import TransactionEnum from "~/enums/TransactionEnum";
 import { computed, ref } from "vue";
 
 export const useTransactions = () => {

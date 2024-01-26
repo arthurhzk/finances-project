@@ -27,7 +27,7 @@ export default {
   computed: {
     chartData() {
       return {
-        labels: ["Quantidade", "Gastos", "Ganhos", "Investimentos"],
+        labels: ["Saldo", "Gastos", "Ganhos", "Investimentos"],
         datasets: [
           {
             backgroundColor: ["#00C58E", "#FF0000", "#3182CE", "#A0AEC0"],

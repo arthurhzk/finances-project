@@ -56,7 +56,6 @@
 
 <script setup>
 const isOpen = ref(false);
-import TransactionEnum from "~/enums/transactionEnum.ts";
 
 const { state, addTransaction } = useAddTransactions();
 const { fetchTransactions } = useTransactions();
@@ -65,10 +64,5 @@ const confirmTransaction = async () => {
   await fetchTransactions();
   isOpen.value = false;
 };
-const transactionTypes = [
-  TransactionEnum.AMOUNT,
-  TransactionEnum.INVESTMENTS,
-  TransactionEnum.GAINS,
-  TransactionEnum.EXPENSES,
-];
+const transactionTypes = ["Saldo", "Investimentos", "Ganhos", "Despesas"];
 </script>
