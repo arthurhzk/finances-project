@@ -7,7 +7,7 @@
 <script setup>
 import navLinks from "~/constants/nav-links";
 
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
 
 const getPathName = computed(() => {
   const getNames = navLinks.map((link) => link.name);

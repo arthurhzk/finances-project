@@ -1,5 +1,5 @@
 import supabase from "~/lib/supabase";
-import { TransactionEnum } from "~/enums/transactionEnum";
+import TransactionEnum from "~/enums/transactionEnum";
 import { computed, ref } from "vue";
 
 export const useTransactions = () => {
@@ -10,7 +10,7 @@ export const useTransactions = () => {
     try {
       const response = await supabase.from("transactions").select("*");
       transactions.value = response.data;
-      console.log(response.data);
+
       isLoading.value = false;
     } catch (error) {
       throw new Error(`An error occurred: ${error}`);

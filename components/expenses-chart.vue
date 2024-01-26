@@ -5,7 +5,7 @@
 <script>
 import { Pie } from "vue-chartjs";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { TransactionEnum } from "~/enums/transactionEnum";
+import TransactionEnum from "~/enums/transactionEnum";
 ChartJS.register(ArcElement, Tooltip, Legend);
 export default {
   name: "ExpensesChart",
@@ -50,3 +50,4 @@ export default {
   },
 };
 </script>
+~/enums/transactionEnum

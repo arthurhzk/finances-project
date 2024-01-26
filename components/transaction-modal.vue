@@ -16,11 +16,9 @@
         }"
       >
         <template #header>
-          <Placeholder class="h-8" />
           <h2>Adicionar transação</h2>
         </template>
 
-        <Placeholder class="h-32" />
         <div space-y-4>
           <UFormGroup label="Quantidade:">
             <UInput
@@ -42,7 +40,6 @@
         </div>
 
         <template #footer>
-          <Placeholder class="h-8" />
           <div class="flex justify-end">
             <UButton
               color="gray"
@@ -59,7 +56,7 @@
 
 <script setup>
 const isOpen = ref(false);
-import { TransactionEnum } from "~/enums/transactionEnum.ts";
+import TransactionEnum from "~/enums/transactionEnum.ts";
 
 const { state, addTransaction } = useAddTransactions();
 const { fetchTransactions } = useTransactions();

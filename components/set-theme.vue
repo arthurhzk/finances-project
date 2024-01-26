@@ -11,13 +11,14 @@
         @click="isDark = !isDark"
       />
 
+      <p class="dark:text-slate-200 hidden md:block">
+        Tema: {{ isDark ? "dark" : "light" }}
+      </p>
+
       <template #fallback>
         <div class="w-8 h-8" />
       </template>
     </ClientOnly>
-    <p class="dark:text-slate-200 hidden md:block">
-      Tema: {{ isDark ? "dark" : "light" }}
-    </p>
   </section>
 </template>
 

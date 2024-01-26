@@ -42,11 +42,11 @@
     />
     <transaction-modal></transaction-modal>
   </div>
-  <transactions class="mt-8" />
+  <transactions />
 </template>
 
 <script setup>
-import brandImages from "~/constants/period-transactions";
+import brandImages from "~/constants/brand-images";
 const selectedView = ref(brandImages[0]);
 import { useUserStore } from "~/store/user";
 import { useTransactions } from "~/composables/use-transactions";
