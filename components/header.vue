@@ -1,10 +1,10 @@
 <template>
   <header class="flex flex-col md:flex-row justify-between items-center mb-10">
-    <NuxtLink to="/" class="text-l md:text-xl font-bold">
+    <NuxtLink to="/" class="md:text-xl font-bold">
       WiseHub - Soluções Financeiras
     </NuxtLink>
     <div>
-      <div class="flex items-center gap-8">
+      <div class="flex flex-col md:flex-row md:gap-8 items-center">
         <NuxtLink v-if="!store.isLoggedIn" to="/login">Login</NuxtLink>
         <NuxtLink v-if="!store.isLoggedIn" to="/register">Registrar</NuxtLink>
 

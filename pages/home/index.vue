@@ -2,7 +2,7 @@
   <section
     class="flex flex-col space-y-4 md:flex-row items-center justify-between mb-10"
   >
-    <h1 class="text-4xl font-extrabold text-center">
+    <h1 class="text-2xl md:text-4xl font-extrabold text-center">
       Sumário de {{ store.userEmail }}
     </h1>
   </section>
@@ -19,7 +19,7 @@
     />
 
     <div
-      class="mx-auto flex-col md:flex-row w-[450px] h-[450px] flex justify-between"
+      class="mx-auto w-[280px] h-[280px] flex-col md:flex-row md:w-[450px] md:h-[450px] flex justify-between"
     >
       <expenses-chart
         :amount="totalAmount"
@@ -30,9 +30,10 @@
     </div>
   </section>
 
-  <div class="flex justify-start"></div>
   <div class="space-y-4 flex flex-col md:flex-row items-center justify-between">
-    <h3 class="text-2xl font-extrabold text-center pt-5">Movimentação</h3>
+    <h3 class="text-lg md:text-2xl font-extrabold text-center pt-5">
+      Movimentação
+    </h3>
 
     <transaction-modal></transaction-modal>
   </div>
