@@ -9,8 +9,8 @@
       <UFormGroup label="Password" name="password">
         <UInput v-model="state.password" type="password" />
       </UFormGroup>
-
-      <UButton type="submit"> Acessar </UButton>
+      <UButton v-if="!isLoading" type="submit"> Acessar </UButton>
+      <UButton v-else loading>Acessar</UButton>
     </UForm>
   </UCard>
 </template>
@@ -20,7 +20,7 @@ import { z } from "zod";
 import type { FormSubmitEvent } from "#ui/types";
 import { useUserStore } from "~/store/user";
 
-const { signInUser, state } = useUserStore();
+const { signInUser, state, isLoading } = useUserStore();
 
 const schema = z.object({
   email: z.string().email("Email invalido!"),
@@ -30,7 +30,6 @@ const schema = z.object({
 type Schema = z.output<typeof schema>;
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  console.log(event.data);
   await signInUser();
 }
 </script>

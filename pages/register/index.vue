@@ -29,7 +29,6 @@ const schema = z.object({
 type Schema = z.output<typeof schema>;
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
-  console.log(event.data);
   await signUpUser();
 }
 </script>

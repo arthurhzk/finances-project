@@ -10,21 +10,17 @@ export const useUserStore = defineStore("users", () => {
   const isLoggedIn = ref<boolean>(false);
   const accessToken = ref();
   const state = ref(initialState);
-
+  const isLoading = ref(false);
   const signUpUser = async () => {
+    isLoggedIn.value = true;
     try {
-      const response = await supabase.auth.signUp({
+      isLoggedIn.value = false;
+      await supabase.auth.signUp({
         email: state.value.email,
         password: state.value.password,
       });
-      accessToken.value = response.data.session?.access_token;
-
-      if (accessToken.value) {
-        isLoggedIn.value = true;
-      } else {
-        throw new Error("Acesso negado, access token não encontrado");
-      }
     } catch (error) {
+      isLoggedIn.value = false;
       throw new Error("Erro ao cadastrar usuário");
     }
   };
@@ -34,21 +30,30 @@ export const useUserStore = defineStore("users", () => {
       isLoggedIn.value = true;
       const response = await supabase.auth.getUser();
       userEmail.value = response?.data.user?.email;
-      console.log(response);
     } catch (error) {
       throw new Error("Erro ao buscar usuário");
     }
   };
 
   const signInUser = async () => {
+    isLoading.value = true;
     try {
-      await supabase.auth.signInWithPassword({
+      const response = await supabase.auth.signInWithPassword({
         email: state.value.email,
         password: state.value.password,
       });
+      accessToken.value = response.data.session?.access_token;
+      isLoading.value = false;
+      if (accessToken.value) {
+        isLoggedIn.value = true;
+      } else {
+        throw new Error("Acesso negado, access token não encontrado");
+      }
       await getUserMetadata();
-      router.push("/");
+
+      router.push("/home");
     } catch (error) {
+      isLoading.value = false;
       throw new Error("Erro ao logar usuário");
     }
   };
@@ -56,6 +61,7 @@ export const useUserStore = defineStore("users", () => {
   const signOutUser = async () => {
     await supabase.auth.signOut();
     isLoggedIn.value = false;
+    router.push("/");
   };
 
   return {
@@ -66,5 +72,6 @@ export const useUserStore = defineStore("users", () => {
     signOutUser,
     getUserMetadata,
     userEmail,
+    isLoading,
   };
 });

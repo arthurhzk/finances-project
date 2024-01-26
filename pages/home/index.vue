@@ -17,7 +17,7 @@
       :amount="card.amount"
       :percentage="card.percentage"
     />
-    <USelect :options="periodTransactions" v-model="selectedView" />
+
     <div
       class="mx-auto flex-col md:flex-row w-[450px] h-[450px] flex justify-between"
     >
@@ -29,14 +29,15 @@
       ></expenses-chart>
     </div>
   </section>
+
   <div class="flex justify-start"></div>
   <div class="space-y-4 flex flex-col md:flex-row items-center justify-between">
     <h3 class="text-2xl font-extrabold text-center pt-5">Movimentação</h3>
-    <UInput
-      icon="i-heroicons-magnifying-glass-20-solid"
-      color="gray"
+
+    <USelect
       variant="outline"
-      placeholder="Procure por algo..."
+      :options="periodTransactions"
+      v-model="selectedView"
     />
     <transaction-modal></transaction-modal>
   </div>
