@@ -96,7 +96,9 @@
       <p :class="getParagraphStyle">
         Otimizando a economia das melhoras empresas do mercado
       </p>
-      <div class="flex flex-col items-center justify-center md:flex-row gap-8">
+      <div
+        class="flex flex-col items-center mx-auto justify-center lg:flex-row gap-8"
+      >
         <img class="observe" v-for="image in brandImages" :src="image.path" />
       </div>
     </div>

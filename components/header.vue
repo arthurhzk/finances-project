@@ -7,6 +7,7 @@
       <div class="flex items-center gap-8">
         <NuxtLink v-if="!store.isLoggedIn" to="/login">Login</NuxtLink>
         <NuxtLink v-if="!store.isLoggedIn" to="/register">Registrar</NuxtLink>
+
         <NuxtLink to="/home" v-if="store.isLoggedIn" class="cursor-pointer"
           >Home</NuxtLink
         >
@@ -17,6 +18,7 @@
         >
           Finalizar Sessão
         </p>
+        <NuxtLink>Planos</NuxtLink>
         <set-theme></set-theme>
       </div>
     </div>

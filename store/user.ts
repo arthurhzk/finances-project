@@ -73,5 +73,6 @@ export const useUserStore = defineStore("users", () => {
     getUserMetadata,
     userEmail,
     isLoading,
+    accessToken,
   };
 });
