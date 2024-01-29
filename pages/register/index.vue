@@ -10,7 +10,7 @@
         <UInput v-model="state.password" type="password" />
       </UFormGroup>
 
-      <UButton type="submit"> Registrar </UButton>
+      <UButton class="text-white" type="submit"> Registrar </UButton>
     </UForm>
   </UCard>
 </template>

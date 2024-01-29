@@ -18,7 +18,7 @@
         >
           Finalizar Sessão
         </p>
-        <NuxtLink>Planos</NuxtLink>
+        <NuxtLink to="/plans">Planos</NuxtLink>
         <set-theme></set-theme>
       </div>
     </div>

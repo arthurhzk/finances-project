@@ -9,8 +9,7 @@
       <UFormGroup label="Password" name="password">
         <UInput v-model="state.password" type="password" />
       </UFormGroup>
-      <UButton v-if="!isLoading" type="submit"> Acessar </UButton>
-      <UButton v-else loading>Acessar</UButton>
+      <UButton class="text-white" type="submit"> Acessar </UButton>
     </UForm>
   </UCard>
 </template>

@@ -10,7 +10,6 @@
         Desenvolvemos um software que é capaz de fazer voce reduzir custos de
         forma milagrosa.
       </p>
-      <UButton size="lg">Começar</UButton>
     </div>
     <section class="mt-7">
       <div class="text-center space-y-4">
