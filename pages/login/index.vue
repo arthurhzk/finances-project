@@ -1,7 +1,7 @@
 <template>
   <UCard>
     <template #header> Faça o login no WiseHub </template>
-    <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
+    <UForm :schema="schema" :state="state" class="space-y-4">
       <UFormGroup label="Email" name="email">
         <UInput v-model="state.email" />
       </UFormGroup>
@@ -9,7 +9,7 @@
       <UFormGroup label="Password" name="password">
         <UInput v-model="state.password" type="password" />
       </UFormGroup>
-      <UButton class="text-white" type="submit"> Acessar </UButton>
+      <UButton @click="signInUser" class="text-white"> Acessar </UButton>
     </UForm>
   </UCard>
 </template>
@@ -27,8 +27,4 @@ const schema = z.object({
 });
 
 type Schema = z.output<typeof schema>;
-
-async function onSubmit(event: FormSubmitEvent<Schema>) {
-  await signInUser();
-}
 </script>

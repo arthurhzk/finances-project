@@ -31,17 +31,17 @@ export const useSelectedTimePeriod = (period: any) => {
 
   const previous = computed(() => {
     switch (period.value) {
-      case "Yearly":
+      case "Anual":
         return {
           from: startOfYear(sub(new Date(), { years: 1 })),
           to: endOfYear(sub(new Date(), { years: 1 })),
         };
-      case "Monthly":
+      case "Mensal":
         return {
           from: startOfMonth(sub(new Date(), { months: 1 })),
           to: endOfMonth(sub(new Date(), { months: 1 })),
         };
-      case "Daily":
+      case "Diário":
         return {
           from: startOfDay(sub(new Date(), { days: 1 })),
           to: endOfDay(sub(new Date(), { days: 1 })),

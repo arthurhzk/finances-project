@@ -43,18 +43,29 @@
 <script setup>
 import { useUserStore } from "~/store/user";
 import { useTransactions } from "~/composables/use-transactions";
-
-const { totalAmount, totalInvestments, totalGains, totalExpenses } =
-  useTransactions();
+import TransactionEnum from "~/enums/TransactionEnum";
+const { getTotalValue, fetchTransactions } = useTransactions();
 const store = useUserStore();
-
+const totalExpenses = ref();
+const totalGains = ref();
+const totalInvestments = ref();
+const totalAmount = ref();
 onMounted(async () => {
   await store.getUserMetadata();
+  await fetchTransactions();
+  totalExpenses.value = getTotalValue(TransactionEnum.EXPENSES);
+  totalGains.value = getTotalValue(TransactionEnum.GAINS);
+  totalInvestments.value = getTotalValue(TransactionEnum.INVESTMENTS);
+  totalAmount.value = getTotalValue(TransactionEnum.AMOUNT);
 });
 const cards = [
-  { title: "Saldo", amount: totalAmount, percentage: 50 },
+  { title: "Saldo", amount: totalAmount, totalGains, percentage: 50 },
   { title: "Investimentos", amount: totalInvestments, percentage: 50 },
   { title: "Ganhos", amount: totalGains, percentage: 50 },
-  { title: "Despesas", amount: totalExpenses, percentage: 50 },
+  {
+    title: "Despesas",
+    amount: totalExpenses,
+    percentage: 50,
+  },
 ];
 </script>

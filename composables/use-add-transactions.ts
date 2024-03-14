@@ -4,8 +4,8 @@ import { ref } from "vue";
 export const useAddTransactions = () => {
   const initialState = {
     description: undefined,
-    type: undefined,
-    quantity: null,
+    category: undefined,
+    amount: null,
     date: new Date(),
   };
   const state = ref(initialState);
@@ -14,10 +14,10 @@ export const useAddTransactions = () => {
     await supabase
       .from("transactions")
       .upsert({
-        descriçao: state.value.description,
-        tipo: state.value.type,
-        quantidade: state.value.quantity,
-        data: state.value.date,
+        description: state.value.description,
+        category: state.value.category,
+        amount: state.value.amount,
+        date: state.value.date,
       })
       .select();
   };

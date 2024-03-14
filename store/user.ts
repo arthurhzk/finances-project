@@ -1,4 +1,5 @@
-import supabase from "~/lib/supabase";
+import supabase from "@/lib/supabase";
+
 export const useUserStore = defineStore("users", () => {
   const initialState = {
     email: "",
@@ -11,6 +12,7 @@ export const useUserStore = defineStore("users", () => {
   const accessToken = ref();
   const state = ref(initialState);
   const isLoading = ref(false);
+
   const signUpUser = async () => {
     isLoggedIn.value = true;
     try {
@@ -42,15 +44,12 @@ export const useUserStore = defineStore("users", () => {
         email: state.value.email,
         password: state.value.password,
       });
-      accessToken.value = response.data.session?.access_token;
-      isLoading.value = false;
-      if (accessToken.value) {
-        isLoggedIn.value = true;
-      } else {
-        throw new Error("Acesso negado, access token não encontrado");
+      if (response.error) {
+        throw new Error("Erro ao logar usuário");
       }
-      await getUserMetadata();
-
+      accessToken.value = response.data.session.access_token;
+      isLoggedIn.value = true;
+      isLoading.value = false;
       router.push("/home");
     } catch (error) {
       isLoading.value = false;

@@ -17,17 +17,17 @@
     <UPagination
       v-model="page"
       :page-count="pageCount"
-      :total="transactions.length"
+      :total="rowTransactionsValue.length"
     >
     </UPagination>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useTransactions } from "~/composables/use-transactions";
 
-const { transactions, isLoading } = useTransactions();
+const { transactions, isLoading, fetchTransactions } = useTransactions();
 const q = ref("");
 
 const selected = ref([]);
@@ -36,7 +36,22 @@ const pageCount = 5;
 const rows = computed(() => {
   const start = (page.value - 1) * pageCount;
   const end = page.value * pageCount;
-  return transactions.value.slice(start, end);
+  return rowTransactionsValue.value.slice(start, end);
+});
+
+const rowTransactionsValue = computed(() => {
+  return transactions.value.map((transaction) => {
+    return {
+      categoria: transaction.category,
+      descrição: transaction.description,
+      valor: transaction.amount,
+      data: new Date(transaction.date).toLocaleDateString(),
+    };
+  });
+});
+
+onMounted(() => {
+  fetchTransactions();
 });
 
 const filteredRows = computed(() => {
@@ -44,7 +59,7 @@ const filteredRows = computed(() => {
     return rows.value;
   }
 
-  return transactions.value.filter((row) => {
+  return rowTransactionsValue.value.filter((row) => {
     return Object.values(row).some((value) => {
       return String(value).toLowerCase().includes(q.value.toLowerCase());
     });

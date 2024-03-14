@@ -5,13 +5,14 @@ import { computed, ref } from "vue";
 export const useTransactions = (period: any) => {
   const transactions = ref<any[] | null>([]);
   const isLoading = ref(false);
+  const transactionValue = ref([] as TransactionEnum[]);
   const fetchTransactions = async () => {
     isLoading.value = true;
     try {
       const response = await supabase
         .from("transactions")
-        .select("id,data,quantidade,tipo,descriçao")
-        .order("data", { ascending: false });
+        .select("*")
+        .order("date", { ascending: false });
 
       transactions.value = response.data;
 
@@ -21,47 +22,26 @@ export const useTransactions = (period: any) => {
     }
   };
 
-  const getTotalValue = (type: TransactionEnum) => {
-    const filteredTransactions = transactions.value?.filter(
-      (transaction) => transaction.tipo === type
+  const getTotalValue = (category: TransactionEnum) => {
+    const filteredTransactions = transactions.value
+      ? transactions.value.filter(
+          (transaction) => transaction.category === category
+        )
+      : [];
+    const totalValue = filteredTransactions?.reduce(
+      (total, transaction) => total + transaction.amount,
+      0
     );
-    return filteredTransactions;
+    transactionValue.value = totalValue;
+
+    return transactionValue.value;
   };
-
-  const totalAmount = computed(() => {
-    const getArray = getTotalValue(TransactionEnum.AMOUNT);
-    const sum = getArray?.reduce((acc, cur) => acc + cur.quantidade, 0);
-    return sum;
-  });
-
-  const totalInvestments = computed(() => {
-    const getArray = getTotalValue(TransactionEnum.INVESTMENTS);
-    const sum = getArray?.reduce((acc, cur) => acc + cur.quantidade, 0);
-    return sum;
-  });
-
-  const totalGains = computed(() => {
-    const getArray = getTotalValue(TransactionEnum.GAINS);
-    const sum = getArray?.reduce((acc, cur) => acc + cur.quantidade, 0);
-    return sum;
-  });
-
-  const totalExpenses = computed(() => {
-    const getArray = getTotalValue(TransactionEnum.EXPENSES);
-    const sum = getArray?.reduce((acc, cur) => acc + cur.quantidade, 0);
-    return sum;
-  });
-
-  fetchTransactions();
 
   return {
     transactions,
     fetchTransactions,
     getTotalValue,
-    totalAmount,
-    totalInvestments,
-    totalGains,
-    totalExpenses,
     isLoading,
+    transactionValue,
   };
 };
