@@ -6,7 +6,6 @@
       >
         {{ $props.title }}
       </h3>
-      <p class="text-md text-green-500">{{ $props.percentage }}%</p>
     </div>
     <h2
       class="text-center font-semibold text-3xl md:text-4xl leading-relaxed tracking-tight mt-6"

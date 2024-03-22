@@ -15,7 +15,6 @@
       :key="card.title"
       :title="card.title"
       :amount="card.amount"
-      :percentage="card.percentage"
     />
     <USelectMenu v-model="selected" :options="periods" placeholder="Período" />
     <div
@@ -200,17 +199,15 @@ const reduceTransactionExpenses = computed(() => {
 });
 
 const cards = ref([
-  { title: "Saldo", amount: reduceTransactionGains, percentage: 50 },
+  { title: "Saldo", amount: reduceTransactionGains },
   {
     title: "Investimentos",
     amount: reduceTransactionInvestments,
-    percentage: 50,
   },
-  { title: "Ganhos", amount: reduceTransactionAmount, percentage: 50 },
+  { title: "Ganhos", amount: reduceTransactionAmount },
   {
     title: "Despesas",
     amount: reduceTransactionExpenses,
-    percentage: 50,
   },
 ]);
 </script>
