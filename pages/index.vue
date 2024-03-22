@@ -110,6 +110,9 @@ import descriptionlinks from "~/constants/description-links";
 import brandImages from "~/constants/brand-images";
 import { computed } from "vue";
 
+useHead({
+  title: `WiseHub - Controle suas finanças de forma inteligente`,
+});
 const getParagraphStyle = computed(() => {
   return "text-center dark:text-slate-200 leading-6 tracking-tighter";
 });

@@ -5,21 +5,36 @@
     </NuxtLink>
     <div>
       <div class="flex flex-col md:flex-row md:gap-8 items-center">
-        <NuxtLink v-if="!store.isLoggedIn" to="/login">Login</NuxtLink>
-        <NuxtLink v-if="!store.isLoggedIn" to="/register">Registrar</NuxtLink>
+        <NuxtLink
+          class="hover:text-green-500"
+          v-if="!store.isLoggedIn"
+          to="/login"
+          >Login</NuxtLink
+        >
+        <NuxtLink
+          class="hover:text-green-500"
+          v-if="!store.isLoggedIn"
+          to="/register"
+          >Registrar</NuxtLink
+        >
 
-        <NuxtLink to="/home" v-if="store.isLoggedIn" class="cursor-pointer"
+        <NuxtLink
+          class="hover:text-green-500 cursor-pointer"
+          to="/home"
+          v-if="store.isLoggedIn"
           >Home</NuxtLink
         >
+
+        <NuxtLink class="hover:text-green-500" to="/plans">Planos</NuxtLink>
+
+        <set-theme />
         <p
-          class="cursor-pointer"
+          class="cursor-pointer hover:text-green-500"
           @click="store.signOutUser"
           v-if="store.isLoggedIn"
         >
           Finalizar Sessão
         </p>
-        <NuxtLink to="/plans">Planos</NuxtLink>
-        <set-theme></set-theme>
       </div>
     </div>
   </header>

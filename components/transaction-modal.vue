@@ -58,9 +58,15 @@ const isOpen = ref(false);
 const { state, addTransaction } = useAddTransactions();
 const { fetchTransactions } = useTransactions();
 const confirmTransaction = async () => {
-  await addTransaction();
-  await fetchTransactions();
-  isOpen.value = false;
+  try {
+    await addTransaction();
+    await fetchTransactions();
+  } catch (error) {
+    console.error(error);
+  } finally {
+    isOpen.value = false;
+    await fetchTransactions();
+  }
 };
 const transactionTypes = [
   TransactionEnum.AMOUNT,

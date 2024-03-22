@@ -1,17 +1,19 @@
 import supabase from "~/lib/supabase";
 import TransactionEnum from "~/enums/TransactionEnum";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 
 export const useTransactions = (period: any) => {
   const transactions = ref<any[] | null>([]);
   const isLoading = ref(false);
   const transactionValue = ref([] as TransactionEnum[]);
-  const fetchTransactions = async () => {
+  const fetchTransactions = async (start: Date, end: Date) => {
     isLoading.value = true;
     try {
       const response = await supabase
         .from("transactions")
         .select("*")
+        .gte("date", start.toISOString())
+        .lte("date", end.toISOString())
         .order("date", { ascending: false });
 
       transactions.value = response.data;

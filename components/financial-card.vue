@@ -20,6 +20,6 @@
 const $props = defineProps({
   title: String,
   percentage: Number,
-  amount: Object,
+  amount: Number,
 });
 </script>

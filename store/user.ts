@@ -7,7 +7,7 @@ export const useUserStore = defineStore("users", () => {
   };
 
   const router = useRouter();
-  const userEmail = ref();
+  const user = ref();
   const isLoggedIn = ref<boolean>(false);
   const accessToken = ref();
   const state = ref(initialState);
@@ -31,7 +31,7 @@ export const useUserStore = defineStore("users", () => {
     try {
       isLoggedIn.value = true;
       const response = await supabase.auth.getUser();
-      userEmail.value = response?.data.user?.email;
+      user.value = response?.data.user?.user_metadata;
     } catch (error) {
       throw new Error("Erro ao buscar usuário");
     }
@@ -70,7 +70,7 @@ export const useUserStore = defineStore("users", () => {
     signInUser,
     signOutUser,
     getUserMetadata,
-    userEmail,
+    user,
     isLoading,
     accessToken,
   };

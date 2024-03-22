@@ -6,7 +6,7 @@
         <UInput v-model="state.email" />
       </UFormGroup>
 
-      <UFormGroup label="Password" name="password">
+      <UFormGroup label="Senha" name="password">
         <UInput v-model="state.password" type="password" />
       </UFormGroup>
 
@@ -31,4 +31,8 @@ type Schema = z.output<typeof schema>;
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   await signUpUser();
 }
+
+useHead({
+  title: `Registrar - WiseHub`,
+});
 </script>

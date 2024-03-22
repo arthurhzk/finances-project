@@ -6,7 +6,7 @@
         <UInput v-model="state.email" />
       </UFormGroup>
 
-      <UFormGroup label="Password" name="password">
+      <UFormGroup label="Senha" name="password">
         <UInput v-model="state.password" type="password" />
       </UFormGroup>
       <UButton @click="signInUser" class="text-white"> Acessar </UButton>
@@ -16,7 +16,6 @@
 
 <script setup lang="ts">
 import { z } from "zod";
-import type { FormSubmitEvent } from "#ui/types";
 import { useUserStore } from "~/store/user";
 
 const { signInUser, state, isLoading } = useUserStore();
@@ -27,4 +26,8 @@ const schema = z.object({
 });
 
 type Schema = z.output<typeof schema>;
+
+useHead({
+  title: `Login - WiseHub`,
+});
 </script>
